@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project | Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { background: #0b0118; color: white; padding: 40px; }
+        .edit-container { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        h2 { margin-bottom: 25px; color: #6e8efb; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #aaa; font-size: 0.9rem; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; }
+        .btn-save { background: #6e8efb; color: #fff; padding: 12px 30px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .btn-cancel { color: #aaa; text-decoration: none; margin-left: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    </style>
+</head>
+<body>
+    <div class="edit-container">
+        <h2>Edit Rincian Proyek</h2>
+        <form method="post">
+            <div class="grid">
+                <div>
+                    <label>Judul Proyek (IND)</label>
+                    <input type="text" name="title" value="{{ proj.title }}" required>
+                </div>
+                <div>
+                    <label>Project Title (ENG)</label>
+                    <input type="text" name="title_en" value="{{ proj.title_en }}">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <label>Peran / Role (IND)</label>
+                    <input type="text" name="role" value="{{ proj.role }}" required>
+                </div>
+                <div>
+                    <label>Role (ENG)</label>
+                    <input type="text" name="role_en" value="{{ proj.role_en }}">
+                </div>
+            </div>
+
+            <label>Tech Stack (e.g. Python, Odoo, JS)</label>
+            <input type="text" name="tech_stack" value="{{ proj.tech_stack }}" required>
+
+            <label>Deskripsi Singkat (IND)</label>
+            <textarea name="description" rows="2" required>{{ proj.description }}</textarea>
+            
+            <label>Short Description (ENG)</label>
+            <textarea name="description_en" rows="2">{{ proj.description_en }}</textarea>
+
+            <label>Tantangan & Solusi (IND)</label>
+            <textarea name="challenge" rows="4">{{ proj.challenge }}</textarea>
+            
+            <label>Challenges & Solutions (ENG)</label>
+            <textarea name="challenge_en" rows="4">{{ proj.challenge_en }}</textarea>
+
+            <div class="grid">
+                <div>
+                    <label>Link Proyek (URL)</label>
+                    <input type="text" name="link" value="{{ proj.link }}">
+                </div>
+                <div>
+                    <label>Nama File Gambar</label>
+                    <input type="text" name="image_filename" value="{{ proj.image_filename }}">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-save">SIMPAN PERUBAHAN PROYEK</button>
+            <a href="{{ url_for('admin_project') }}" class="btn-cancel">Batal</a>
+        </form>
+    </div>
+</body>
+</html>

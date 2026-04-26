@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog | Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { background: #0b0118; color: white; padding: 40px; }
+        .edit-container { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        h2 { margin-bottom: 25px; color: #ff9f43; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; }
+        .btn-save { background: #ff9f43; color: #fff; padding: 12px 30px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .btn-cancel { color: #aaa; text-decoration: none; margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <div class="edit-container">
+        <h2>Edit Artikel Blog</h2>
+        <form method="post">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div>
+                    <label>Judul Blog (IND)</label>
+                    <input type="text" name="title" value="{{ blog.title }}" required>
+                </div>
+                <div>
+                    <label>Blog Title (ENG)</label>
+                    <input type="text" name="title_en" value="{{ blog.title_en }}">
+                </div>
+            </div>
+            
+            <label>Ringkasan / Snippet (IND)</label>
+            <textarea name="description" rows="3" required>{{ blog.description }}</textarea>
+            
+            <label>Summary (ENG)</label>
+            <textarea name="description_en" rows="3">{{ blog.description_en }}</textarea>
+            
+            <label>Date Badge (e.g. JUN 20)</label>
+            <input type="text" name="date_badge" value="{{ blog.date_badge }}" required>
+            
+            <label>Image Filename</label>
+            <input type="text" name="image_filename" value="{{ blog.image_filename }}">
+            
+            <button type="submit" class="btn-save">SIMPAN PERUBAHAN ARTIKEL</button>
+            <a href="{{ url_for('admin_blog') }}" class="btn-cancel">Batal</a>
+        </form>
+    </div>
+</body>
+</html>

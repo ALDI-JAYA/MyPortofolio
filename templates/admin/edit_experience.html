@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Experience | Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { background: #0b0118; color: white; padding: 40px; }
+        .edit-container { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        h2 { margin-bottom: 25px; color: #bf94ff; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; }
+        .btn-save { background: #bf94ff; color: #000; padding: 12px 30px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .btn-cancel { color: #aaa; text-decoration: none; margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <div class="edit-container">
+        <h2>Edit Pengalaman Kerja</h2>
+        <form method="post">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div>
+                    <label>Role (IND)</label>
+                    <input type="text" name="role" value="{{ exp.role }}" required>
+                </div>
+                <div>
+                    <label>Role (ENG)</label>
+                    <input type="text" name="role_en" value="{{ exp.role_en }}">
+                </div>
+            </div>
+            
+            <label>Company</label>
+            <input type="text" name="company" value="{{ exp.company }}" required>
+            
+            <label>Date Range</label>
+            <input type="text" name="date_range" value="{{ exp.date_range }}" required>
+            
+            <label>Deskripsi (IND)</label>
+            <textarea name="description" rows="4" required>{{ exp.description }}</textarea>
+            
+            <label>Description (ENG)</label>
+            <textarea name="description_en" rows="4">{{ exp.description_en }}</textarea>
+            
+            <label>Tags (Skills)</label>
+            <input type="text" name="tags" value="{{ exp.tags }}">
+            
+            <button type="submit" class="btn-save">SIMPAN PERUBAHAN</button>
+            <a href="{{ url_for('admin_experience') }}" class="btn-cancel">Batal</a>
+        </form>
+    </div>
+</body>
+</html>

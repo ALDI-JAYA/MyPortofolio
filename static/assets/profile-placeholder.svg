@@ -1,0 +1,18 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#152544"/>
+      <stop offset="1" stop-color="#0A1124"/>
+    </linearGradient>
+    <linearGradient id="shape" x1="180" y1="140" x2="620" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8BCDF6"/>
+      <stop offset="1" stop-color="#6F8CFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" rx="40" fill="url(#bg)"/>
+  <circle cx="400" cy="330" r="145" fill="url(#shape)" fill-opacity="0.92"/>
+  <path d="M200 770C200 629 289 545 400 545C511 545 600 629 600 770V840H200V770Z" fill="url(#shape)" fill-opacity="0.92"/>
+  <text x="50%" y="920" text-anchor="middle" fill="#CFE2FF" font-family="Inter, Arial, sans-serif" font-size="34" letter-spacing="2">
+    GANTI DENGAN FOTO ANDA
+  </text>
+</svg>

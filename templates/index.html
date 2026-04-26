@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aldi Tri Wijaya | Portfolio</title>
+  <meta name="description" content="Portfolio Aldi Tri Wijaya - Python Programmer dan Odoo Developer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <style>
+    .blog-header-bg {
+      background-image: url("{{ url_for('static', filename='assets/blog-bg.png') }}");
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Custom Cyber Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
+
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <canvas id="ai-canvas"></canvas>
+
+  <header class="navbar">
+    <div class="navbar-container">
+      <a class="logo" href="#home">ATW</a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="scramble-text" data-value="{{ 'Home' if lang == 'en' else 'Beranda' }}">{{ 'Home' if lang == 'en' else 'Beranda' }}</a></li>
+        <li><a href="#about" class="scramble-text" data-value="{{ 'About' if lang == 'en' else 'Tentang' }}">{{ 'About' if lang == 'en' else 'Tentang' }}</a></li>
+        <li><a href="#experience" class="scramble-text" data-value="{{ 'Experience' if lang == 'en' else 'Pengalaman' }}">{{ 'Experience' if lang == 'en' else 'Pengalaman' }}</a></li>
+        <li><a href="#projects" class="scramble-text" data-value="{{ 'Projects' if lang == 'en' else 'Proyek' }}">{{ 'Projects' if lang == 'en' else 'Proyek' }}</a></li>
+        <li><a href="#services" class="scramble-text" data-value="{{ 'Services' if lang == 'en' else 'Layanan' }}">{{ 'Services' if lang == 'en' else 'Layanan' }}</a></li>
+        <li><a href="#skills" class="scramble-text" data-value="{{ 'Skills' if lang == 'en' else 'Keahlian' }}">{{ 'Skills' if lang == 'en' else 'Keahlian' }}</a></li>
+        <li><a href="#blog" class="scramble-text" data-value="{{ 'Blog' if lang == 'en' else 'Blog' }}">{{ 'Blog' if lang == 'en' else 'Blog' }}</a></li>
+        <li><a href="#contact" class="scramble-text" data-value="{{ 'Contact' if lang == 'en' else 'Kontak' }}">{{ 'Contact' if lang == 'en' else 'Kontak' }}</a></li>
+        <li class="lang-switch">
+          <a href="{{ url_for('set_lang', ln='id') }}" class="{{ 'active' if lang == 'id' else '' }}">ID</a> | 
+          <a href="{{ url_for('set_lang', ln='en') }}" class="{{ 'active' if lang == 'en' else '' }}">EN</a>
+        </li>
+      </ul>
+      <a class="btn btn-nav hide-mobile" href="#contact">Hire Me</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero container">
+      <div class="bubbles-container">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="hero-content reveal">
+        <p class="eyebrow" id="typewriter">Python Programmer • Odoo Developer • AI Enthusiast</p>
+        <h1 class="hero-name"><span id="name-typewriter">ALDI TRI WIJAYA</span></h1>
+        <p class="hero-desc">
+          Fokus saya adalah pengembangan aplikasi Python, Odoo, dan solusi AI
+          untuk membantu bisnis berjalan lebih cepat, terstruktur, dan scalable
+          dengan pendekatan yang modern dan profesional.
+        </p>
+      </div>
+
+      <div class="hero-photo-wrap reveal" id="hero-photo-wrap">
+        <div class="photo-glow"></div>
+        <div class="cyber-ring"></div>
+        <div class="cyber-ring-outer"></div>
+
+        <!-- 3D Tech Orbit -->
+        <div class="tech-orbit">
+          <div class="orbit-icon python" title="Python"><i class="fab fa-python"></i></div>
+          <div class="orbit-icon odoo" title="Odoo">O</div>
+          <div class="orbit-icon postgres" title="PostgreSQL"><i class="fas fa-database"></i></div>
+          <div class="orbit-icon linux" title="Linux"><i class="fab fa-linux"></i></div>
+        </div>
+
+        <div class="scan-line"></div>
+        <div class="ai-circuit-wrap"></div>
+        <div class="ai-particles">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <img class="profile-photo" src="{{ url_for('static', filename='assets/4.png') }}"
+          alt="Foto profil Aldi Tri Wijaya" />
+      </div>
+    </section>
+
+    <section id="about" class="section container reveal">
+      <div class="about-modern-title">
+        <h2 class="section-title-big">Tentang Saya</h2>
+      </div>
+
+      <div class="about-grid-classic">
+        <div class="about-left">
+          <div class="about-info-item">
+            <strong>Full Name:</strong>
+            <span>Aldi Tri Wijaya</span>
+          </div>
+          <div class="about-info-item">
+            <strong>Phone:</strong>
+            <span>+62 85210857508</span>
+          </div>
+          <div class="about-info-item">
+            <strong>Email:</strong>
+            <span>alditriwijaya64@gmail.com</span>
+          </div>
+          <div class="about-info-item">
+            <strong>Address:</strong>
+            <span>Purworejo, Jawa Tengah, Indonesia</span>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <h3>Halo!</h3>
+          <p>
+            Saya seorang pengembang perangkat lunak yang berfokus pada ekosistem Python dan Odoo ERP. Dengan
+            pengalaman bertahun-tahun dalam membangun solusi bisnis yang scalable, saya membantu perusahaan
+            mengotomatiskan proses mereka dan meningkatkan efisiensi operasional.
+          </p>
+          <p>
+            Selain pengembangan ERP, ketertarikan saya pada Kecerdasan Buatan (AI) mendorong saya untuk terus berinovasi
+            dalam mengintegrasikan teknologi pintar ke dalam aplikasi bisnis modern. Saya percaya bahwa setiap masalah
+            digital memiliki solusi yang elegan dan efisien.
+          </p>
+
+          <div class="about-social-new">
+            <a href="https://github.com/ALDI-JAYA" aria-label="Github"><svg xmlns="http://www.w3.org/2000/svg"
+                width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+              </svg></a>
+            <a href="https://www.linkedin.com/in/aldi-tri-wijaya-1369a1243/?locale=in" aria-label="LinkedIn"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg></a>
+            <a href="https://wa.me/6285210857508" target="_blank" aria-label="WhatsApp"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.431h.006c6.551 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section container reveal">
+      <h2 class="section-title-big">Pengalaman Kerja</h2>
+      <div class="experience-timeline">
+        {% for exp in experiences %}
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">{{ exp.date_range }}</div>
+          <div class="timeline-content">
+            <div class="exp-role">{{ exp.role_en if lang == 'en' and exp.role_en else exp.role }}</div>
+            <h4 class="exp-company">{{ exp.company }}</h4>
+            <p>{{ exp.description_en if lang == 'en' and exp.description_en else exp.description }}</p>
+            <ul class="exp-tags">
+              {% for tag in exp.tags.split(',') %}
+              <li>{{ tag.strip() }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="projects" class="portfolio section container reveal">
+      <div class="portfolio-header">
+        <h2 class="section-title-big scramble-text" data-value="{{ 'My Projects' if lang == 'en' else 'Proyek Saya' }}">
+          {{ 'My Projects' if lang == 'en' else 'Proyek Saya' }}
+        </h2>
+        <p class="section-subtitle">
+          {{ 'Whether you have a mobile app idea that needs to come to life or a website that requires a facelift, I\'m here to turn your digital dreams into reality.' if lang == 'en' else 'Apakah Anda memiliki ide aplikasi seluler yang perlu diwujudkan atau situs web yang memerlukan pembaruan, saya di sini untuk mengubah impian digital Anda menjadi kenyataan.' }}
+        </p>
+      </div>
+
+      <div class="portfolio-grid-new">
+        {% for project in projects %}
+        <div class="project-card">
+          <div class="project-img-wrap">
+            <img src="{{ url_for('static', filename='assets/' + project.image_filename) }}" alt="{{ project.title }}" />
+          </div>
+          <div class="project-info">
+            <h3>{{ project.title_en if lang == 'en' and project.title_en else project.title }}</h3>
+            <p>{{ project.description_en if lang == 'en' and project.description_en else project.description }}</p>
+            <a href="javascript:void(0)" class="btn-details modal-trigger" 
+               data-title="{{ project.title_en if lang == 'en' and project.title_en else project.title }}"
+               data-desc="{{ project.description_en if lang == 'en' and project.description_en else project.description }}"
+               data-image="{{ url_for('static', filename='assets/' + project.image_filename) }}"
+               data-link="{{ project.link }}"
+               data-role="{{ project.role_en if lang == 'en' and project.role_en else project.role }}"
+               data-tech="{{ project.tech_stack }}"
+               data-challenge="{{ project.challenge_en if lang == 'en' and project.challenge_en else project.challenge }}">
+               {{ 'SEE DETAILS' if lang == 'en' else 'LIHAT DETAIL' }}
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="services" class="section container reveal">
+      <div class="services-header">
+        <h2 class="section-title-big">Layanan</h2>
+        <p class="section-subtitle">
+          Membantu transformasi bisnis Anda melalui solusi teknologi yang cerdas,
+          terukur, dan inovatif dengan fokus pada efisiensi operasional.
+        </p>
+      </div>
+
+      <div class="services-grid-new">
+        <div class="service-card-new">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <h3>PYTHON DEVELOPER</h3>
+          <div class="service-divider"></div>
+          <p>Membangun aplikasi backend yang tangguh, scalable, dan maintainable menggunakan framework Python modern.
+          </p>
+        </div>
+
+        <div class="service-card-new">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="9" y1="21" x2="9" y2="9" />
+            </svg>
+          </div>
+          <h3>ODOO CUSTOMIZATION</h3>
+          <div class="service-divider"></div>
+          <p>Kustomisasi modul Odoo, optimasi workflow, dan penyesuaian fungsionalitas ERP sesuai kebutuhan bisnis Anda.
+          </p>
+        </div>
+
+        <div class="service-card-new">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3>IT SECURITY ANALYST</h3>
+          <div class="service-divider"></div>
+          <p>Memastikan sistem dan data Anda terlindungi melalui audit keamanan, manajemen risiko, dan pertahanan siber.
+          </p>
+        </div>
+
+        <div class="service-card-new">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </div>
+          <h3>AI INTEGRATION</h3>
+          <div class="service-divider"></div>
+          <p>Integrasi Kecerdasan Buatan (AI) untuk meningkatkan otomasi, pengambilan keputusan, dan pengalaman
+            pengguna.</p>
+        </div>
+
+        <div class="service-card-new">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+              <path
+                d="M2 21c0-3 1.85-5.36 5.08-6C10.2 14.33 12.5 13 13 10c0 3 2.5 4 3.48 4.76C19.25 16.5 21 19.33 21 21" />
+            </svg>
+          </div>
+          <h3>ERP SOLUTIONS</h3>
+          <div class="service-divider"></div>
+          <p>Solusi ERP terpadu untuk mengelola seluruh aspek operasional perusahaan dalam satu sistem yang
+            terintegrasi.</p>
+        </div>
+
+        <div class="service-card-new">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 21 1.9-1.9" />
+              <path d="m3 3 1.9 1.9" />
+              <path d="M5 16a3 3 0 1 1-2-2.83V10.83a3 3 0 1 1 2 0v2.34c.54.2 1.04.53 1.46.96" />
+              <path d="M19 19c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2Z" />
+              <path d="M19 5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2Z" />
+            </svg>
+          </div>
+          <h3>API DEVELOPMENT</h3>
+          <div class="service-divider"></div>
+          <p>Pengembangan API (RESTful/GraphQL) untuk menghubungkan berbagai platform dan memfasilitasi pertukaran data.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section container reveal">
+      <div class="skills-header">
+        <h2 class="skills-boxed-title">Keahlian</h2>
+      </div>
+
+      <div class="skills-category">
+        <h3>USING NOW:</h3>
+        <div class="skills-grid-new">
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            <span>PYTHON</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" />
+            <span>JAVASCRIPT</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+            <span>HTML5</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+            <span>CSS3</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+              alt="PostgreSQL" />
+            <span>POSTGRESQL</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+            <span>GIT</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+            <span>LINUX</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Odoo_logo.svg" alt="Odoo" />
+            <span>ODOO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3>LEARNING:</h3>
+        <div class="skills-grid-new">
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+              alt="Tensorflow" />
+            <span>TENSORFLOW</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
+            <span>PYTORCH</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
+            <span>NEXT.JS</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+              alt="TypeScript" />
+            <span>TYPESCRIPT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3>OTHER SKILLS:</h3>
+        <div class="skills-grid-new">
+          <div class="skill-item">
+            <div class="skill-icon-placeholder">🇬🇧</div>
+            <span>ENGLISH</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon-placeholder">🇮🇩</div>
+            <span>INDONESIAN</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon-placeholder">API</div>
+            <span>REST API</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon-placeholder">🤖</div>
+            <span>AI INTEGRATION</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="section blog-section-new reveal">
+      <div class="blog-header-box">
+        <div class="blog-header-bg"></div>
+        <div class="blog-header-content container">
+          <h2 class="blog-title-new">My <span>Blog</span></h2>
+          <p class="blog-subtitle-new">
+            Sharing insights and practical guides about Python, Odoo, AI, and business automation.
+          </p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="blog-grid-overlay">
+          {% for blog in blogs %}
+          <div class="blog-card-new">
+            <div class="blog-card-top">
+              <div class="blog-date-badge">{{ blog.date_badge }}</div>
+              <img src="{{ url_for('static', filename='assets/' + blog.image_filename) }}" alt="{{ blog.title }}" />
+              <h3>{{ blog.title }}</h3>
+            </div>
+            <div class="blog-card-bottom">
+              <p>{{ blog.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="blog-footer-new">
+          <a href="#" class="btn btn-dark">Read More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section container reveal">
+      <div class="contact-form-wrap">
+        <h3 class="contact-title-main">Jangan ragu untuk menghubungi saya</h3>
+
+        <form id="contact-form" class="custom-contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama <span class="req">*</span></label>
+              <input type="text" id="name" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="Email Anda" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Ada yang bisa saya bantu?</label>
+            <textarea id="message" placeholder="Ceritakan tentang proyek Anda"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Layanan <span class="req">*</span></label>
+            <div class="services-choices">
+              <label class="choice-item">
+                <input type="checkbox" name="service" value="Custom Odoo">
+                <span class="box"></span>
+                Custom Odoo
+              </label>
+              <label class="choice-item">
+                <input type="checkbox" name="service" value="AI Integration" checked>
+                <span class="box"></span>
+                AI Integration
+              </label>
+              <label class="choice-item">
+                <input type="checkbox" name="service" value="Python Automation">
+                <span class="box"></span>
+                Python Automation
+              </label>
+              <label class="choice-item">
+                <input type="checkbox" name="service" value="Web Development">
+                <span class="box"></span>
+                Web Development
+              </label>
+            </div>
+          </div>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn-pill-submit">SEND MESSAGE</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© <span id="year"></span> Aldi Tri Wijaya. All rights reserved.</p>
+  </footer>
+
+  <div class="terminal-toggle" id="terminal-toggle" title="Open Dev Terminal">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="4 17 10 11 4 5"></polyline>
+      <line x1="12" y1="19" x2="20" y2="19"></line>
+    </svg>
+  </div>
+
+  <div class="terminal-container" id="terminal-container">
+    <div class="terminal-header">
+      <span>atw@portfolio: ~</span>
+      <div class="terminal-controls">
+        <span class="control close" id="terminal-close"></span>
+      </div>
+    </div>
+    <div class="terminal-body" id="terminal-body">
+      <div class="terminal-output" id="terminal-output">
+        <p>Welcome to ATW Terminal v1.0.0</p>
+        <p>Type <span class="highlight">'help'</span> to see available commands.</p>
+      </div>
+      <div class="terminal-input-line">
+        <span class="prompt">atw:~$</span>
+        <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Detail Modal -->
+  <div class="project-modal" id="project-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div class="modal-main">
+        <div class="modal-gallery">
+          <img src="" id="modal-image" alt="Project Preview">
+        </div>
+        <div class="modal-body">
+          <div class="modal-header">
+            <h2 id="modal-title">Project Title</h2>
+            <div class="modal-badges" id="modal-stack-pills">
+              <!-- Tech pills injected here -->
+            </div>
+          </div>
+          
+          <div class="modal-grid-detailed">
+            <div class="modal-description-group">
+                <h3><i class="fas fa-info-circle"></i> Overview</h3>
+                <p class="modal-desc" id="modal-desc"></p>
+            </div>
+            
+            <div class="modal-sidebar">
+                <div class="meta-item">
+                    <span class="meta-label">ROLE</span>
+                    <span class="meta-value" id="modal-role">Lead Developer</span>
+                </div>
+            </div>
+          </div>
+
+          <div class="modal-challenge-box">
+             <h3><i class="fas fa-bolt"></i> The Challenge & Solution</h3>
+             <p id="modal-challenge"></p>
+          </div>
+
+          <div class="modal-footer">
+            <a href="#" id="modal-link" class="btn-primary" target="_blank">Launch Project <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Chat Widget -->
+  <div class="ai-chat-toggle" id="ai-chat-toggle" title="Ask AI Assistant">
+    <div class="ai-sparkle"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </div>
+
+  <div class="ai-chat-window" id="ai-chat-window">
+    <div class="ai-chat-header">
+      <div class="ai-status-wrap">
+        <div class="ai-status-dot"></div>
+        <span>Aldi AI Assistant</span>
+      </div>
+      <button class="ai-chat-close" id="ai-chat-close">&times;</button>
+    </div>
+    <div class="ai-chat-messages" id="ai-chat-messages">
+      <div class="message bot">Halo! Saya asisten AI Aldi. Ada yang bisa saya bantu tentang Odoo atau Python?</div>
+    </div>
+    <div class="ai-chat-input-area">
+      <input type="text" id="ai-chat-input" placeholder="Tanyakan sesuatu...">
+      <button id="ai-chat-send">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | ATW</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { background: #0f0f15; color: white; padding: 40px; }
+        .admin-nav { margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
+        .admin-nav a { color: #bf94ff; margin-right: 20px; text-decoration: none; font-weight: bold; }
+        .admin-card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #222; }
+        .btn-logout { background: #ff4d4d; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; float: right; }
+    </style>
+</head>
+<body>
+    <div class="admin-nav">
+        <a href="{{ url_for('admin_dashboard') }}">Messages</a>
+        <a href="{{ url_for('admin_experience') }}">Experience</a>
+        <a href="{{ url_for('admin_project') }}">Projects</a>
+        <a href="{{ url_for('admin_blog') }}">Blog</a>
+        <a href="{{ url_for('home') }}" target="_blank">View Site</a>
+        <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+    </div>
+
+    <h1>Inbox Pesan Kontak</h1>
+    <div class="admin-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Waktu</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Layanan</th>
+                    <th>Pesan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for msg in messages %}
+                <tr>
+                    <td>{{ msg.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>{{ msg.name }}</td>
+                    <td>{{ msg.email }}</td>
+                    <td>{{ msg.services }}</td>
+                    <td>{{ msg.message }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Projects | Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { background: #0f0f15; color: white; padding: 40px; }
+        .admin-nav { margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
+        .admin-nav a { color: #bf94ff; margin-right: 20px; text-decoration: none; font-weight: bold; }
+        .form-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 10px; margin-bottom: 40px; max-width: 600px; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: white; border-radius: 5px; }
+        .btn-add { background: #bf94ff; color: black; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .proj-item { background: rgba(255,255,255,0.02); padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; justify-content: space-between; }
+        .btn-delete { color: #ff4d4d; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="admin-nav">
+        <a href="{{ url_for('admin_dashboard') }}">Messages</a>
+        <a href="{{ url_for('admin_experience') }}">Experience</a>
+        <a href="{{ url_for('admin_project') }}">Projects</a>
+        <a href="{{ url_for('admin_blog') }}">Blog</a>
+        <a href="{{ url_for('logout') }}" style="float:right; color:red">Logout</a>
+    </div>
+
+    <h1>Kelola Proyek Portfolio</h1>
+    
+    <div class="form-card">
+        <h3>Tambah Proyek Baru (Modern Detail)</h3>
+        <form method="post">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" name="title" placeholder="Project Title (IND)" required>
+                <input type="text" name="title_en" placeholder="Project Title (ENG)">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" name="role" placeholder="Your Role (IND)" required>
+                <input type="text" name="role_en" placeholder="Your Role (ENG)">
+            </div>
+
+            <input type="text" name="tech_stack" placeholder="Tech Stack (comma separated: Python, Odoo 15, PostgreSQL)" required>
+
+            <textarea name="description" placeholder="Short Description (IND)" rows="2" required></textarea>
+            <textarea name="description_en" placeholder="Short Description (ENG)" rows="2"></textarea>
+
+            <textarea name="challenge" placeholder="Challenges & Solutions (IND)" rows="4"></textarea>
+            <textarea name="challenge_en" placeholder="Challenges & Solutions (ENG)" rows="4"></textarea>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" name="link" placeholder="Project Link (URL)" value="#">
+                <input type="text" name="image_filename" placeholder="Image Filename" value="project-1.png">
+            </div>
+            <button type="submit" class="btn-add">SIMPAN PROYEK DETAIL</button>
+        </form>
+    </div>
+
+    <h2>Daftar Proyek</h2>
+    {% for proj in projects %}
+    <div class="proj-item">
+        <div>
+            <strong>{{ proj.title }}</strong>
+        </div>
+        <div class="actions">
+            <a href="{{ url_for('edit_project', id=proj.id) }}" style="color: #6e8efb; text-decoration: none; margin-right: 15px;">Edit</a>
+            <a href="{{ url_for('delete_project', id=proj.id) }}" class="btn-delete" onclick="return confirm('Hapus proyek ini?')">Hapus</a>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
