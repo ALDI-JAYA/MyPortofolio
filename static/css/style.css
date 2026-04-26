@@ -2150,9 +2150,6 @@ body.hovered .cursor-dot {
     .cursor-dot, .cursor-outline { display: none; }
     body { cursor: auto !important; }
 }
-}
-    }
-}
 
 /* 3D Tilt Card Support */
 .project-card {
@@ -2243,4 +2240,3 @@ body.hovered .cursor-dot {
     perspective: 1000px;
     transform-style: preserve-3d;
 }
-
